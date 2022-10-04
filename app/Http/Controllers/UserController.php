@@ -21,11 +21,6 @@ class UserController extends Controller
         return back();
     }
 
-    public function fileExport()
-    {
-        return Excel::download(new UsersExport, 'user-collection.xlsx');
-    }
-
     public function index()
     {
         $users = DB::table('users')

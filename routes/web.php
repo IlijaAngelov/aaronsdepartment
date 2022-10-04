@@ -16,21 +16,8 @@ use App\Http\Controllers\ShiftController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-// // change name of the route, edit index method to show the data
-// Route::get('/view', [EmployeeController::class, 'index'])->name('view');
-
-// // (relocate??) import the data from the csv file, use the import method then (return view??)
-// Route::post('/import', [EmployeeController::class, 'import'])->name('import');
-
-
 Route::get('file_import_export', [UserController::class, 'fileImportExport']);
 Route::post('file_import', [UserController::class, 'fileImport'])->name('file_import');
-Route::get('file_export', [UserController::class, 'fileExport'])->name('file_export');
-
 
 Route::get('/viewTable', [UserController::class, 'index'])->name('view_table');
 Route::get('/viewEmployee', [UserController::class, 'view'])->name('view_employee');
