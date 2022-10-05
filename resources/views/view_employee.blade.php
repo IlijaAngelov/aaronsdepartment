@@ -10,7 +10,7 @@
 <body>
 <div class="container md-5">
     <div>Employee Name: {{ $name['name'] }}</div>
-    @foreach($user as $d)
+    @foreach($average as $d)
     <div>Average pay per hour {{ $d->avg_per_hour }}</div>
     <div>Average Total Pay {{ $d->total_pay }}</div>
     @endforeach

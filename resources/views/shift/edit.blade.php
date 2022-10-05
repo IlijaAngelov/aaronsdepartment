@@ -24,30 +24,30 @@
 
             <div class="form-group mb-2">
                 <label for="employee" class="col-sm-2 col-form-label">Employee</label>
-                <input type="text" class="form-control" id="employee" name="employee" placeholder="{{ $user->Employee }}">
+                <input type="text" class="form-control" id="employee" name="Employee" value="{{ $user->Employee }}">
             </div>
             <div class="form-group mb-2">
                 <label for="employer" class="col-sm-2 col-form-label">Employer</label>
-                <input type="text" class="form-control" id="employer" name="employer" placeholder="{{ $user->Employer }}">
+                <input type="text" class="form-control" id="employer" name="Employer" value="{{ $user->Employer }}">
             </div>
             <div class="form-group mb-2">
                 <label for="hours" class="col-sm-2 col-form-label">Hours</label>
-                <input type="number" class="form-control" id="hours" name="hours" placeholder="{{ $user->Hours }}">
+                <input type="number" class="form-control" id="hours" name="Hours" value="{{ $user->Hours }}">
             </div>
             <div class="form-group mb-2">
                 <label for="rate_per_hour" class="col-sm-2 col-form-label">Rate per Hour</label>
-                <input type="number" class="form-control" id="rate_per_hour" name="rate_per_hour" placeholder="{{ $user->Rate_per_Hour }}">
+                <input type="number" class="form-control" id="rate_per_hour" name="Rate_per_Hour" value="{{ $user->Rate_per_Hour }}">
             </div>
             <div class="form-group mb-2">
                 <label for="taxable" class="col-sm-2 col-form-label">Taxable</label>
-                <select name="taxable" id="taxable" name="taxable">
+                <select name="taxable" id="taxable" name="Taxable">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
             </div>
             <div class="form-group mb-2">
                 <label for="status" class="col-sm-2 col-form-label">Status</label>
-                <select name="status" id="status" name="status">
+                <select name="status" id="status" name="Status">
                     <option value="Complete">Complete</option>
                     <option value="Pending">Pending</option>
                     <option value="Processing">Processing</option>
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group mb-2">
                 <label for="shift_type" class="col-sm-2 col-form-label">Shift Type</label>
-                <select name="shift_type" id="shift_type" name="shift_type">
+                <select name="shift_type" id="shift_type" name="Shift_Type">
                     <option value="Day">Day</option>
                     <option value="Night">Night</option>
                     <option value="Holiday">Holiday</option>
@@ -64,7 +64,7 @@
             </div>
             <div class="form-group mb-2">
                 <label for="paid_at" class="col-sm-2 col-form-label">Paid At</label>
-                <input type="date" class="form-control" id="paid_at" name="paid_at" placeholder="{{  $user->Paid_At }}">
+                <input type="date" class="form-control" id="paid_at" name="Paid_At" value="{{  $user->Paid_At }}">
             </div>
               <button type="submit" class="btn btn-default btn-light mb-2">Edit Shift</button>
         </form>

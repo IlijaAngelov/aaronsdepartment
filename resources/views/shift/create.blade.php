@@ -15,6 +15,14 @@
             {{ session('success') }}
         </div>
         @endif
+        @if($errors->any())
+            <div class="alert alert-danger">Something went wrong...</div>
+        @foreach ($errors->all() as $error)
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+          </ul>
+        @endforeach
+        @endif
     </div>
     <div class="container mt-5">
         <form action="{{ route('shift.store') }}" method="POST" enctype="multipart/form-data">

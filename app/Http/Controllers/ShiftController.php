@@ -17,10 +17,7 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        $shifts = DB::table('users')
-        ->distinct()
-        ->get('shift_type');
-        return view('shift.index', compact('shifts'));
+        //
     }
 
     /**
@@ -41,40 +38,29 @@ class ShiftController extends Controller
      */
     public function store(Request $request)
     {
-        $shift = new User;
-        $shift->date = now();
-        $shift->employee = $request->employee;
-        $shift->employer = $request->employer;
-        $shift->hours = $request->hours;
-        $shift->rate_per_hour = $request->rate_per_hour;
-        $shift->taxable = $request->taxable;
-        $shift->status = $request->status;
-        $shift->shift_type = $request->shift_type;
-        $shift->paid_at = $request->paid_at;
-        $shift->save();
 
-        // $request->validate([
-        //     'employee' => 'required|max:255',
-        //     'employer' =>'required|max:255',
-        //     'hours' =>'required|min:1',
-        //     'rate_per_hour' =>'required',
-        //     'taxable' =>'required',
-        //     'status' =>'required',
-        //     'shift_type' =>'required',
-        //     'paid_at' =>'required'
-        // ]);
-        // $time = Carbon::now();
-        // User::create([
-        //     'date' => $request->$time,
-        //     'employee' => $request->employee,
-        //     'employer' => $request->employer,
-        //     'hours' => $request->hours,
-        //     'rate_per_hour' => $request->rate_per_hour,
-        //     'taxable' => $request->taxable,
-        //     'status' => $request->status,
-        //     'shift_type' => $request->shift_type,
-        //     'paid_at' => $request->paid_at
-        // ]);
+        $request->validate([
+            'employee' => 'required|max:255',
+            'employer' =>'required|max:255',
+            'hours' =>'required|min:1',
+            'rate_per_hour' =>'required',
+            'taxable' =>'required',
+            'status' =>'required',
+            'shift_type' =>'required',
+            'paid_at' =>'required'
+        ]);
+
+        Shift::create([
+            'Date'      => now(),
+            'Employee' => $request->employee,
+            'Employer' => $request->employer,
+            'Hours'    => $request->hours,
+            'Rate_per_Hour' => "£" . $request->rate_per_hour,
+            'Taxable'   => $request->taxable,
+            'Status'    => $request->status,
+            'Shift_Type' => $request->shift_type,
+            'Paid_At'   => $request->paid_at
+        ]);
 
         return redirect(route('view_total'))->with('success', 'New Shift has been added!');
     }
@@ -112,17 +98,9 @@ class ShiftController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::where('id', $id)->update([
-            'date' => now(),
-            'employee' => $request->employee,
-            'employer' => $request->employer,
-            'hours' => $request->hours,
-            'rate_per_hour' => $request->rate_per_hour,
-            'taxable' => $request->taxable,
-            'status' => $request->status,
-            'shift_type' => $request->shift_type,
-            'paid_at' => $request->paid_at
-        ]);
+        Shift::where('id', $id)->update($request->except([
+            '_token', '_method'
+        ]));
 
         return redirect(route('view_total'))->with('success', 'A Shift has been edited!');
     }

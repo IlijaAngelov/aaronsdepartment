@@ -46,7 +46,7 @@
           </tr>
       </thead>
       <tbody>
-          @foreach($userTotal as $user)
+          @foreach($totalUsers as $user)
           <tr>
               <th scope="row">{{ $user->id }}</th>
               <td>{{ $user->date }}</td>
@@ -71,7 +71,7 @@
   </table>
 
   <div class="d-flex">
-    {!! $userTotal->links() !!}
+    {!! $totalUsers->links() !!}
   </div>
 </div>
 </body>

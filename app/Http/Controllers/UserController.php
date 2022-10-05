@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\UsersExport;
+use App\Models\User;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,11 +23,11 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = DB::table('users')
-        ->distinct()
-        ->get(['Employee']);
-
-        return view('view_table', compact('users'));
+        $users = User::distinct()
+        ->get('Employee');
+        return view('view_table', [
+            'users' => $users
+        ]);
 
     }
 
@@ -35,34 +35,34 @@ class UserController extends Controller
     {
         $name = $request->all('name');
 
-        $user = DB::table('users')
-        ->where('employee', $name)
-        ->get();
-
-        $user = DB::table('users')
-        ->selectRaw('round(avg(SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours),2) as total_pay,
+        $average = User::selectRaw('round(avg(SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours),2) as total_pay,
         round(avg(SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour))),2) as avg_per_hour')
         ->where('Employee', $name)
         ->get();
 
-        $completedPayments = DB::table('users')
-        ->where('Employee', $name)
+        $completedPayments = User::where('Employee', $name)
         ->where('status', 'Complete')
-        ->orderByDesc('Date')
+        ->orderBy('Date', 'desc')
         ->limit(5)
         ->get();
 
-        return view('view_employee', compact('name', 'user', 'completedPayments'));
+        return view('view_employee', [
+            'name' => $name,
+            'average' => $average,
+            'completedPayments' => $completedPayments
+        ]);
+
     }
 
     public function total()
     {
 
-        $userTotal = DB::table('users')
-        ->selectRaw('id, date, employee, employer, hours, rate_per_Hour, taxable, status, shift_type, paid_at, (SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours) as total')
+        $totalUsers = User::selectRaw('id, date, employee, employer, hours, rate_per_Hour, taxable, status, shift_type, paid_at, (SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours) as total')
         ->paginate(25);
 
-        return view('view_total', compact('userTotal'));
+        return view('view_total', [
+            'totalUsers' => $totalUsers
+        ]);
     }
 
     public function filterTotal(Request $request)
@@ -70,11 +70,12 @@ class UserController extends Controller
 
         $filter = $request->all('filter');
 
-        $userTotal = DB::table('users')
-        ->selectRaw("id, date, employee, employer, hours, rate_per_Hour, taxable, status, shift_type, paid_at, (SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours) as 'total' ")
-        ->where(DB::raw('SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours'), '>=', $filter)
+        $totalUsers = User::selectRaw("id, date, employee, employer, hours, rate_per_Hour, taxable, status, shift_type, paid_at, (SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours) as 'total' ")
+        ->where(User::raw('SUBSTRING(Rate_per_Hour,2,length(Rate_per_Hour)) * Hours'), '>=', $filter)
         ->paginate(25);
 
-        return view('view_total', compact('userTotal'));
+        return view('view_total', [
+            'totalUsers' => $totalUsers
+        ]);
     }
 }
