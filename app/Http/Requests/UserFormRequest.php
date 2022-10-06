@@ -24,14 +24,16 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'employee' => 'required|max:255',
-            'employer' =>'required|max:255',
-            'hours' =>'required|min:1',
-            'rate_per_hour' =>'required',
-            'taxable' =>'required',
-            'status' =>'required',
-            'shift_type' =>'required',
-            'paid_at' =>'required'
+            'Employee' => 'required|max:255',
+            'Employer' =>'required|max:255',
+            'Hours' =>'required|min:1',
+            'Rate_per_Hour' =>'required',
+            'Taxable' =>'required',
+            'Status' =>'required',
+            'Shift_Type' =>'required',
+            'Paid_At' =>'required'
         ];
+
+        return $rules;
     }
 }

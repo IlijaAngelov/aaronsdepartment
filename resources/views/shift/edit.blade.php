@@ -15,6 +15,14 @@
             {{ session('success') }}
         </div>
         @endif
+        @if($errors->any())
+            <div class="alert alert-danger">Something went wrong...</div>
+        @foreach ($errors->all() as $error)
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+          </ul>
+        @endforeach
+        @endif
     </div>
     <div class="container mt-5">
         <h1>Edit Page</h1>
@@ -36,30 +44,33 @@
             </div>
             <div class="form-group mb-2">
                 <label for="rate_per_hour" class="col-sm-2 col-form-label">Rate per Hour</label>
-                <input type="number" class="form-control" id="rate_per_hour" name="Rate_per_Hour" value="{{ $user->Rate_per_Hour }}">
+                <input type="number" class="form-control" id="rate_per_hour" name="Rate_per_Hour" placeholder="{{ ltrim($user->Rate_per_Hour, '£') }}" value="{{ $user->Rate_per_Hour }}">
             </div>
             <div class="form-group mb-2">
                 <label for="taxable" class="col-sm-2 col-form-label">Taxable</label>
-                <select name="taxable" id="taxable" name="Taxable">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                <select id="taxable" name="Taxable">
+                    <option value="">Select...</option>
+                    <option value="Yes" {{ $user->Taxable == "Yes" ? 'selected' : '' }}>Yes</option>
+                    <option value="No" {{ $user->Taxable == "No" ? 'selected' : '' }}>No</option>
                 </select>
             </div>
             <div class="form-group mb-2">
                 <label for="status" class="col-sm-2 col-form-label">Status</label>
-                <select name="status" id="status" name="Status">
-                    <option value="Complete">Complete</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Processing">Processing</option>
-                    <option value="Failed">Failed</option>
+                <select id="status" name="Status">
+                    <option value="">Select...</option>
+                    <option value="Complete" {{ $user->Status == "Complete" ? 'selected' : '' }}>Complete</option>
+                    <option value="Pending" {{ $user->Status == "Pending" ? 'selected' : '' }}>Pending</option>
+                    <option value="Processing" {{ $user->Status == "Processing" ? 'selected' : '' }}>Processing</option>
+                    <option value="Failed" {{ $user->Status == "Failed" ? 'selected' : '' }}>Failed</option>
                 </select>
             </div>
             <div class="form-group mb-2">
                 <label for="shift_type" class="col-sm-2 col-form-label">Shift Type</label>
-                <select name="shift_type" id="shift_type" name="Shift_Type">
-                    <option value="Day">Day</option>
-                    <option value="Night">Night</option>
-                    <option value="Holiday">Holiday</option>
+                <select id="shift_type" name="Shift_Type">
+                    <option value="">Select...</option>
+                    <option value="Day" {{ $user->Shift_Type == "Day" ? 'selected' : '' }}>Day</option>
+                    <option value="Night" {{ $user->Shift_Type == "Night" ? 'selected' : '' }}>Night</option>
+                    <option value="Holiday" {{ $user->Shift_Type == "Holiday" ? 'selected' : '' }}> Holiday</option>
                 </select>
             </div>
             <div class="form-group mb-2">

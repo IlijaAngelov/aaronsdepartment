@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Shift;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UserFormRequest;
 
 class ShiftController extends Controller
 {
@@ -36,19 +37,10 @@ class ShiftController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
 
-        $request->validate([
-            'employee' => 'required|max:255',
-            'employer' =>'required|max:255',
-            'hours' =>'required|min:1',
-            'rate_per_hour' =>'required',
-            'taxable' =>'required',
-            'status' =>'required',
-            'shift_type' =>'required',
-            'paid_at' =>'required'
-        ]);
+        $request->validated();
 
         Shift::create([
             'Date'      => now(),
@@ -96,12 +88,13 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserFormRequest $request, $id)
     {
+        $request->validated();
+
         Shift::where('id', $id)->update($request->except([
             '_token', '_method'
         ]));
-
         return redirect(route('view_total'))->with('success', 'A Shift has been edited!');
     }
 
@@ -113,7 +106,7 @@ class ShiftController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        Shift::destroy($id);
 
         return redirect(route('view_total'))->with('success', 'A shift has been deleted!');
     }
