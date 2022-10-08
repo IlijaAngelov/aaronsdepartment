@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('Date');
+            $table->date('Date');
             $table->string('Employee');
             $table->string('Employer');
-            $table->string('Hours');
-            $table->string("Rate_per_Hour")->nullable();
+            $table->integer('Hours');
+            $table->string("Rate_per_Hour");
             $table->string('Taxable');
             $table->string('Status');
-            $table->string("Shift_Type")->nullable();
-            $table->string("Paid_At")->nullable();
+            $table->string("Shift_Type");
+            $table->dateTime("Paid_At")->nullable();
             $table->timestamps();
         });
     }

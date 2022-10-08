@@ -13,6 +13,7 @@ class Shift extends Model
     protected $table = 'users';
 
     protected $fillable = [
+        'Date',
         'Employee',
         'Employer',
         'Hours',
