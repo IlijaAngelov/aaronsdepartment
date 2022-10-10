@@ -9,8 +9,7 @@ class Shift extends Model
 {
     use HasFactory;
 
-    // fix to shifts table
-    protected $table = 'users';
+    protected $table = 'shifts';
 
     protected $fillable = [
         'Date',

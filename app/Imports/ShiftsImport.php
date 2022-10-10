@@ -2,12 +2,12 @@
 
 namespace App\Imports;
 
-use App\Models\User;
+use App\Models\Shift;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class UsersImport implements ToModel, WithStartRow
+class ShiftsImport implements ToModel, WithStartRow
 {
     /**
     * @param array $row
@@ -16,18 +16,7 @@ class UsersImport implements ToModel, WithStartRow
     */
     public function model(array $row)
     {
-        return new User([
-            // "Date" => 'Date',
-            // "Employee" => 'Employee',
-            // "Employer" => 'Employer',
-            // "Hours" => 'Hours',
-            // "Rate per Hour" => 'Rate per Hour',
-            // "Taxable" => 'Taxable',
-            // "Status" => 'Status',
-            // "Shift_type" => 'Shift Type',
-            // "Paid At" => 'Paid At'
-
-
+        return new Shift([
             "Date" => $row[0],
             "Employee" => $row[1],
             "Employer" => $row[2],
@@ -37,10 +26,6 @@ class UsersImport implements ToModel, WithStartRow
             "Status" => $row[6],
             "Shift_Type" => $row[7],
             "Paid_At" => $row[8]
-
-            // 'name' => $row[0],
-            // 'email' => $row[1],
-            // 'password' => Hash::make($row[2])
         ]);
 
     }

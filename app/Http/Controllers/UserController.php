@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Imports\UsersImport;
 use Illuminate\Http\Request;
+use App\Imports\ShiftsImport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function fileImport(Request $request)
     {
-        Excel::import(new UsersImport, $request->file('file')->store('temp'));
+        Excel::import(new ShiftsImport, $request->file('file')->store('temp'));
         return back();
     }
 
