@@ -69,7 +69,7 @@
             </div>
             <div class="form-group mb-2">
                 <label for="paid_at" class="col-sm-2 col-form-label">Paid At</label>
-                <input type="date" class="form-control" id="paid_at" name="Paid_At" placeholder="Paid At">
+                <input type="datetime-local" class="form-control" id="paid_at" name="Paid_At" placeholder="Paid At">
             </div>
               <button type="submit" class="btn btn-default btn-light mb-2">New Shift</button>
         </form>
