@@ -41,18 +41,18 @@
             </div>
             <div class="form-group mb-2">
                 <label for="rate_per_hour" class="col-sm-2 col-form-label">Rate per Hour</label>
-                <input type="number" class="form-control" id="rate_per_hour" name="Rate_per_Hour" placeholder="Rate per Hour">
+                <input type="number" class="form-control" id="Rate_per_hour" name="Rate_per_Hour" placeholder="Rate per Hour">
             </div>
             <div class="form-group mb-2">
-                <label for="taxable" class="col-sm-2 col-form-label">Taxable</label>
-                <select name="taxable" id="taxable" name="Taxable">
+                <label for="Taxable" class="col-sm-2 col-form-label">Taxable</label>
+                <select id="Taxable" name="Taxable">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
             </div>
             <div class="form-group mb-2">
                 <label for="status" class="col-sm-2 col-form-label">Status</label>
-                <select name="status" id="status" name="Status">
+                <select id="status" name="Status">
                     <option value="Complete">Complete</option>
                     <option value="Pending">Pending</option>
                     <option value="Processing">Processing</option>
@@ -61,7 +61,7 @@
             </div>
             <div class="form-group mb-2">
                 <label for="shift_type" class="col-sm-2 col-form-label">Shift Type</label>
-                <select name="shift_type" id="shift_type" name="Shift_Type">
+                <select id="shift_type" name="Shift_Type">
                     <option value="Day">Day</option>
                     <option value="Night">Night</option>
                     <option value="Holiday">Holiday</option>

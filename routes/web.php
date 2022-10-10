@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftController;
 
@@ -16,15 +16,15 @@ use App\Http\Controllers\ShiftController;
 |
 */
 
-Route::get('file_import_export', [UserController::class, 'fileImportExport']);
-Route::post('file_import', [UserController::class, 'fileImport'])->name('file_import');
+Route::get('file_import_export', [ImportController::class, 'fileImportExport']);
+Route::post('file_import', [ImportController::class, 'fileImport'])->name('file_import');
 
-Route::get('/viewTable', [UserController::class, 'index'])->name('view_table');
-Route::get('/viewEmployee', [UserController::class, 'view'])->name('view_employee');
-Route::post('/viewEmployee', [UserController::class, 'view'])->name('view_employee');
+Route::get('/viewTable', [ImportController::class, 'index'])->name('view_table');
+Route::get('/viewEmployee', [ImportController::class, 'view'])->name('view_employee');
+Route::post('/viewEmployee', [ImportController::class, 'view'])->name('view_employee');
 
-Route::get('/viewTotal', [UserController::class, 'total'])->name('view_total');
-Route::post('/viewTotal', [UserController::class, 'filterTotal'])->name('view_total');
+Route::get('/viewTotal', [ImportController::class, 'total'])->name('view_total');
+Route::post('/viewTotal', [ImportController::class, 'filterTotal'])->name('view_total');
 
 Route::resource('/shift', ShiftController::class);
 

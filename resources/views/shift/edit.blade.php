@@ -75,7 +75,7 @@
             </div>
             <div class="form-group mb-2">
                 <label for="paid_at" class="col-sm-2 col-form-label">Paid At</label>
-                <input type="date" class="form-control" id="paid_at" name="Paid_At" value="{{  $user->Paid_At }}">
+                <input type="datetime-local" class="form-control" id="paid_at" name="Paid_At" value="{{ $user->Paid_At }}">
             </div>
               <button type="submit" class="btn btn-default btn-light mb-2">Edit Shift</button>
         </form>

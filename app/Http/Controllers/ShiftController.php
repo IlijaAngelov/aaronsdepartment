@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShiftFormRequest;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shift;
@@ -37,21 +38,19 @@ class ShiftController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserFormRequest $request)
+    public function store(ShiftFormRequest $request)
     {
-
         $request->validated();
-
         Shift::create([
             'Date'      => now(),
-            'Employee' => $request->employee,
-            'Employer' => $request->employer,
-            'Hours'    => $request->hours,
-            'Rate_per_Hour' => "£" . $request->rate_per_hour,
-            'Taxable'   => $request->taxable,
-            'Status'    => $request->status,
-            'Shift_Type' => $request->shift_type,
-            'Paid_At'   => $request->paid_at
+            'Employee' => $request->Employee,
+            'Employer' => $request->Employer,
+            'Hours'    => $request->Hours,
+            'Rate_per_Hour' => "£" . $request->Rate_per_Hour,
+            'Taxable'   => $request->Taxable,
+            'Status'    => $request->Status,
+            'Shift_Type' => $request->Shift_Type,
+            'Paid_At'   => $request->Paid_At
         ]);
 
         return redirect(route('view_total'))->with('success', 'New Shift has been added!');
@@ -77,7 +76,7 @@ class ShiftController extends Controller
     public function edit($id)
     {
         return view('shift.edit', [
-            'user' => User::where('id', $id)->first()
+            'user' => Shift::where('id', $id)->first()
         ]);
     }
 
@@ -88,7 +87,7 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserFormRequest $request, $id)
+    public function update(ShiftFormRequest $request, $id)
     {
         $request->validated();
 
