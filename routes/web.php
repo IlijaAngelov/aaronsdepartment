@@ -16,7 +16,11 @@ use App\Http\Controllers\ShiftController;
 |
 */
 
-Route::get('file_import_export', [ImportController::class, 'fileImportExport']);
+Route::get('/', function() {
+    return view('/index');
+});
+
+Route::get('file_import_export', [ImportController::class, 'fileImportExport'])->name('file_upload');
 Route::post('file_import', [ImportController::class, 'fileImport'])->name('file_import');
 
 Route::get('/viewTable', [ImportController::class, 'index'])->name('view_table');

@@ -8,15 +8,20 @@
   <title>Document</title>
 </head>
 <body>
-<div class="container md-5">
-    <div>Employee Name: {{ $name['name'] }}</div>
-    @foreach($average as $d)
-    <div>Average pay per hour {{ $d->avg_per_hour }}</div>
-    <div>Average Total Pay {{ $d->total_pay }}</div>
+<div class="container card mt-5 mb-5 w-25 text-center">
+    <div class="card-header">
+        Summary Card for:
+        <p>{{ $name['name'] }}</p>
+    </div>
+    <div class="card-body">
+        @foreach($average as $d)
+    <div>Average pay per hour: {{ $d->avg_per_hour }}</div>
+    <div>Average Total Pay: {{ $d->total_pay }}</div>
     @endforeach
+    </div>
 </div>
 <div class="container mt-5">
-    <p>Table of last 5 completed payments</p>
+    <p class="container text-center">Table of last 5 completed payments</p>
   <table class="table table-striped">
       <thead>
           <tr class="table-success">
@@ -49,6 +54,7 @@
           @endforeach
       </tbody>
   </table>
+<a href="{{ url()->previous() }}" class="btn btn-primary mt-3">Go Back</a>
 </div>
 </body>
 </html>

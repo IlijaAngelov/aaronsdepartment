@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>File Upload</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
         <!-- Styles -->
         <style>
@@ -20,24 +21,12 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200">
-            <form action="" method="POST">
-                @csrf
-                <div>
-                    <label for="import">Select a file:</label>
-                    <input type="file">
-                </div>
-                <div>
-                    <button class="btn btn-large btn-primary">Submit</button>
-                </div>
-            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <body class="antialiased" style="background-color: #D0D0D0">
+        <div class="container mt-5 w-50 text-center">
+            <h2 class="mb-5">App for CSV file upload and Data View</h2>
+            <a href="{{ route('file_upload') }}" class="btn btn-light">Upload Page</a>
+            <a href="{{ route('view_table') }}" class="btn btn-light">View Employees</a>
+            <a href="{{ route('view_total') }}" class="btn btn-light">View All Shifts</a>
+        </div>
     </body>
 </html>

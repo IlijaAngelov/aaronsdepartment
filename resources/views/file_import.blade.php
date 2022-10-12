@@ -8,18 +8,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5 text-center">
-        <h2 class="mb-4">
-            Importing CSV files
-        </h2>
-        <form action="{{ route('file_import') }}" method="POST" enctype="multipart/form-data">
+    <div class="container mt-5 w-50 text-center">
+            <h2 class="mb-4">
+                Import CSV files
+            </h2>
+            <form action="{{ route('file_import') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="text-left">
-                <input type="file" name="file" id="customFile">
-                <label for="customFile">Choose file</label>
+            <label for="import" class="form-label">Upload a CSV File:</label>
+            <input type="file" id="import" name="file" class="form-control" style="height: auto">
+            <div class="container">
+                <a href="{{ url()->previous() }}" class="btn btn-primary mt-3">Go Back</a>
+                <button class="btn btn-primary mt-3">Import CSV</button>
             </div>
-            <button class="btn btn-primary">Import CSV</button>
-        </form>
+            </form>
     </div>
 </body>
 </html>

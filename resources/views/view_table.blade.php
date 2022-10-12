@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="container mt-5">
+<a href="{{ url()->previous() }}" class="btn btn-primary mt-3 mb-3">Go Back</a>
   <table class="table table-striped">
       <thead>
           <tr class="table-success">

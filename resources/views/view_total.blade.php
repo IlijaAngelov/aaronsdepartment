@@ -16,7 +16,8 @@
     @endif
 </div>
 <div class="container mt-5">
-    <a class="btn btn-default btn-primary mb-2" href="{{ route('shift.create') }}">New Shift</a>
+    <a href="{{ url()->previous() }}" class="btn btn-primary mt-3">Go Back</a>
+    <a class="btn btn-default btn-primary mt-3" href="{{ route('shift.create') }}">New Shift</a>
 </div>
 <div class="container mt-5">
     <form action="{{ route('view_total') }}" method="POST">
